@@ -1,0 +1,81 @@
+
+                                        Chapter 2 
+                              Getting Started with Kernel Dev
+
+- Directory Structure Of kernel source
+  - arch: Architecture-specific source
+  - block: Block I/O layer
+  - crypto: Crypto API
+  - Documentation: Kernel source documentation
+  - drivers: Device drivers
+  - firmware: Device firmware needed to use certain drivers
+  - fs: The VFS and the individual filesystems
+  - include: Kernel headers
+  - init: Kernel boot and initialization
+  - ipc: Interprocess communication code
+  - kernel: Core subsystems, such as the scheduler
+  - lib: Helper routines
+  - mm: Memory management subsystem and the VM
+  - net: Networking subsystem
+  - samples: Sample, demonstrative code
+  - scripts: Scripts used to build the kernel
+  - security: Linux Security Module
+  - sound: Sound subsystem
+  - usr: Early user-space code (called initramfs)
+  - tools: Tools helpful for developing Linux
+  - virt: Virtualization infrastructure
+
+- Configuring the kernel
+  - Lots of params to be configure before compiling kernel.
+  - Mostly configuration options are boolean(Yes or No) or tristate(Yes,No or module).
+  - The module setting represents a configuration option that is set but is to be compiled as a module (that is    , a separate dynami-cally loadable object).
+
+  - Use of make config (text), make menuconfig (Graphical), make gconfig (Graphical), make defconfig (default
+    config for the current architecture.)
+  - validate config using "make oldconfig".
+
+- Beast Of different Nature
+  - Kernel do not have access to neither C library nor standard C headers.
+  - Kernel is coded in GNU C.
+  - printk instead of printf.
+  - printk has print levels , that specify the nature of the log/error occured. 
+  - example: printk(KERN_DEBUG "Debug message shown!\n");
+  - Kernel is written in various languages available in gcc language extensions.
+
+- Inline Functions
+  - Eliminates the overhead of function invocation and return and allows for greater optimization as the 
+  compiler can optimize both caller and the called function as one.
+  - but, code size increases , which increases memory consumption and instruction footprint.
+  - Kernel developers use inline functions for small time-critical functions.
+
+- Macros vs Inline functions
+  - In C, static means that the scope of variable/function is limited to this file only.
+  - Inline functions are preferred over MACROS for the sake of readability.
+  - inline static functions are usually placed in header files.
+
+- Inline Assembly
+  - assembly language in embedded in serveral parts of kernel using asm directive.
+  - asm volatile("rdtsc" : "=a" (low), "=d" (high));
+
+- Branch annotation
+  - The gcc C compiler has a built-in directive that optimizes conditional branches as either
+  very likely taken or very unlikely taken.
+  - Provides performance boost when used correctly.
+
+- No Memory Protection
+  - In case of illegal memory access by process, kernel raises SIGSEGV error. But in case of kernel accesssing    such memory it results in a "oops" error which is a critical kernel error. 
+  - Ex: Dereferencing the NULL pointer
+  - Kernel memory is not pagable, every bit is consumed from the main memory.
+
+- No Easy Use of Floating Point
+  - Kernel support floating point operations for the user-space processes, but it cant support
+    same operations for itself. 
+  - Manual saving and restoring of floating point registers need to be done.
+
+- Small Fixed-Size Stack
+  - Stack size is variable nowadays.
+  - Stack size was earlier 2 pages of size.
+
+- Synchronization and Concurrency
+  - Linux supports SMP(Symmetrical Multiprocessing).
+

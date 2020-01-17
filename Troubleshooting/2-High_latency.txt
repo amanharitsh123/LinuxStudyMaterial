@@ -1,0 +1,28 @@
+                    Situation 2: Latency is now much higher. Troubleshoot.
+Follow Up:
+1) How are you measuring this?
+
+Solution:
+                                    Check CPU 
+Tools:
+    - top. Things to check:
+    - us: user time
+    - sy: System time
+    - id: idle time
+    - wa: wait IO
+
+vmstat:
+    - Look at CPU stats.
+    - Check memory if swapping is happening.
+
+mpstat:
+    - See if any single CPU has lots of laod.
+
+                                    Check Disks
+iostat:
+    - check writes.
+    - Check utilization.
+
+                                    Check Network IO
+sar -n DEV 1
+    - similar to iostat for Networks.

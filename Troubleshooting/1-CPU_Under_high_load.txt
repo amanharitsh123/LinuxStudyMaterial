@@ -1,0 +1,36 @@
+                    Situation 1: My system is slow. Troubleshoot.
+
+Follow UP:
+1) What do you mean by system is slow?
+2) Anything changed recently?
+
+Solution:
+
+Tools:
+1) top , if cpu load is not much then process is not eating cpu, problem can be IO
+2) iostat -x 1 (High tps val means processors are busy, else IO load is not present)
+3) netstat -s
+4) ss , socket stat
+5) sar -n DEV 1 , sar -P 1 will give for all processors seperately
+6) vmstat
+7) strace -p `pgrep lab002`
+8) cat /etc/resolve.conf , DNS issue
+
+Analyze Workload:
+1) Who is causing load?
+
+2) why is the laod called?
+
+3) what is the load?
+
+4) How is load changing over time?
+
+5) See for Utilization (Busy Time)
+, Saturation (Queue length or queued time) 
+and Errors. (objective)
+
+6) Check for disk errors, buses, IO etc.
+7) Off CPU analysis, Ex: Blocked waiting,Involuntary Context Switch
+
+8) CPU Profiling Method
+

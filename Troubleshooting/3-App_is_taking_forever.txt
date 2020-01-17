@@ -1,0 +1,21 @@
+                    Situation 3: App is taking forever. Troubleshoot.
+Follow UP:
+
+Solution:
+                        Check System wide summary
+1) vmstat 1
+    - user time and system time observed
+2) mpstart 1
+3) pidstat 1 
+    - high system and user time is observed
+
+                        Check Disk (Is system time is caused by disk usage)
+1) iostat
+    -  no load observed
+                        Check Network IO
+1) sar -n DEV
+    - nothing observed
+
+                        Check system calls(Because systime time is high)
+1) strace
+    - It is calling read on file descripter 3

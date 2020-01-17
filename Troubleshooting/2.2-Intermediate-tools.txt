@@ -1,0 +1,34 @@
+Tools:
+
+1) strace
+    - Blocks,freeze and unfreezing a process.
+
+2) tcpdump
+    - sniff network packets for post analysis
+    - Ex: tcpdump -i eth0 -w /tmp/out.tcpdump
+    - cant work on very fast connections like 10GB/s link.
+
+3) netstat 
+    - Various network protocol statistics using -s
+
+4) nicstat  
+    - iostat like output
+
+5) pidstat 
+    - very useful process stats , by thread, disk I/O
+
+6) swapon
+    - show swap device usage
+
+7) lsof
+    - help debug so many file descriptors in use.
+    - can be use to monitor sockets
+    - lsof -i TCP
+
+8) sar, System Activity Reporter
+    - Archieve or live mode
+    - sar -n TCP,ETCP,DEV 1
+    - TCP 
+    - Error TCP
+    - DEV: network interface device stat
+

@@ -1,0 +1,40 @@
+Observability Tools:
+1) Basic
+
+uptime 
+    - Print Load averages 1,5,15 Minutes
+    - Measure of resource demand
+    - Load > # of CPUs , may mean CPU Saturation
+    - output : 22:41:13 up  1:13,  1 user,  load average: 0.36, 0.34, 0.26
+    - uninterruptable disk IO are included in load averages.
+
+top or htop
+    - % of CPU is summed across all CPUs
+    - short lived process may be ignored. (High load average but CPU summary shows 0 load) solution using atop
+
+ps
+    - process status listing
+
+vmstat 
+    - Virtual memory statistics
+    - procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
+       r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
+       0  0      0 236384  59312 887080    0    0    53    33  223  428  5  2 92  1  0
+    - r: run queue length
+    - cpu:
+        - us: User Time
+        - sy: System Time (System calls and Interrupts)
+
+iostat
+    - Block IO disk stat.
+
+iotop
+    - Find Process using CPU.
+
+mpstat
+    - Multi - Process statistics
+    - Find hot CPUs
+
+free
+    - buffers: Block Device I/O cache
+    - cached: virtual page cache
